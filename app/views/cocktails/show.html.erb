@@ -12,12 +12,9 @@
     <div class="d-flex">
       <div>
         <% if @cocktail.photo.present?  %>
-          <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag @cocktail.photo, height: 400, crop: :fill %>
         <% else %>
-          <% unless result['drinks'] == nil %>
-            <% mar = result['drinks'] %>
-            <img src= <%= mar[0]['strDrinkThumb'] %> alt="didnt" height= "400">
-            <% end %>
+
         <% end %>
       </div>
       <div class="m-5">

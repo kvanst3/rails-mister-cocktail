@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'json'
+
 class CocktailsController < ApplicationController
   def index
     @cocktails = Cocktail.all
@@ -9,6 +12,17 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
+
+    if @cocktail.photo_cache.nil?
+      url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + @cocktail.name
+      result = JSON.parse(open(url).read)
+      mar = result['drinks']
+      unless result['drinks'] == nil
+        url = mar[0]['strDrinkThumb']
+        @cocktail[:photo] = url + '.jpg'  ##very unstable, need better way of doing
+      end
+    end
+
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
@@ -37,12 +51,12 @@ class CocktailsController < ApplicationController
     redirect_to cocktails_path
   end
 
-  def delete_img
-    @cocktail = Cocktail.find(params[:id])
-    @cocktail.photo = ""
-    @cocktail.save
-    redirect_to cocktail_path(@cocktail)
-  end
+  # def delete_img
+  #   @cocktail = Cocktail.find(params[:id])
+  #   @cocktail.photo = ""
+  #   @cocktail.save
+  #   redirect_to cocktail_path(@cocktail)
+  # end
 
   private
 
@@ -51,3 +65,9 @@ class CocktailsController < ApplicationController
   end
 
 end
+
+
+          # <% unless result['drinks'] == nil %>
+          #   <% mar = result['drinks'] %>
+          #   <img src= <%= mar[0]['strDrinkThumb'] %> alt="didnt" height= "400">
+          # <% end %>
