@@ -1,9 +1,10 @@
  <div class="container">
   <h1>My Cocktails</h1>
   <p style="text-align: right"> <%= link_to "+ Add Cocktail", new_cocktail_path(@cocktail)  %> </p>
+
   <% @cocktails.each do |cocktail| %>
     <ul style="list-style: none">
-      <li> <%= link_to cocktail.name, cocktail_path(cocktail) %> </li>
+      <li> <%= link_to cocktail.name, cocktail_path(cocktail) %> <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe , cocktail_path(cocktail), method: :delete %> </li>
     </ul>
   <% end %>
 
@@ -15,3 +16,5 @@
       width: 150, height: 150, crop: :thumb, gravity: :face) %>
 
 </div>
+
+
