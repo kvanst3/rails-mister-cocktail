@@ -1,9 +1,26 @@
+<% require "open-uri" %>
+<% require 'json' %>
+
+<% url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + @cocktail.name%>
+<% result = JSON.parse(open(url).read) %>
+
 <div class="container">
   <div>
     <h1><%= @cocktail.name %></h1>
+
     <p style="text-align: right">  <%= link_to 'Home', :cocktails  %></p>
-    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+    <% if @cocktail.photo.present?  %>
+      <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <% unless mar = result['drinks'] == nil %>
+        <% mar = result['drinks'] %>
+        <img src= <%= mar[0]['strDrinkThumb'] %> alt="didnt" height= "400" >
+        <% end %>
+    <% end %>
     </br>
+
+
+    <% if @cocktail.doses.present? %>
       <% @cocktail.doses.each do |dose| %>
         <ul style="list-style: none">
           <li> <%= dose.description %>
@@ -12,6 +29,21 @@
           </li>
         </ul>
       <% end %>
+    <% else %>
+      <% unless mar = result['drinks'] == nil %>
+        <% for i in 1..5 do %>
+          <% if mar[0]["strIngredient#{i}"] != "" %>
+          <ul style="list-style: none">
+            <li>
+              <%= mar[0]["strMeasure#{i}"] %>
+              <%= mar[0]["strIngredient#{i}"] %>
+            </li>
+          </ul>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
     </br>
 
     <%= link_to 'Add Description', new_cocktail_dose_path(@cocktail)  %>
