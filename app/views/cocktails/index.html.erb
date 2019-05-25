@@ -1,20 +1,20 @@
+ <div class="nav">
+    <div id="title">Cocktailmania</div>
+    <div><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), id: 'new_cocktail'  %></div>
+    <div id="icon"><%= cl_image_tag("icon_mamfrc", :height => 80) %></div>
+ </div>
  <div class="container">
-  <h1>My Cocktails</h1>
-  <p style="text-align: right"> <%= link_to "+ Add Cocktail", new_cocktail_path(@cocktail)  %> </p>
+  <h1 style="color: #F60074; text-align: center">Cocktails</h1>
 
-  <% @cocktails.each do |cocktail| %>
-    <ul style="list-style: none">
-      <li> <%= link_to cocktail.name, cocktail_path(cocktail) %> <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe , cocktail_path(cocktail), method: :delete %> </li>
-    </ul>
-  <% end %>
+  <div class=" cards">
+    <% @cocktails.each do |cocktail| %>
+      <div class="card">
+        <%= link_to cocktail.name, cocktail_path(cocktail), id: "links" %>
+        <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe , cocktail_path(cocktail), method: :delete, id: "trash" %>
+      </div>
+    <% end %>
 
-<%= cl_image_tag("hw2h05m2yqg5l7olzw5e.jpg",
-      width: 400, height: 300, crop: :fill) %>
-
-<!-- for face detection -->
-<%= cl_image_tag("v1558693420/dxifex5uisqgegesatsb.jpg",
-      width: 150, height: 150, crop: :thumb, gravity: :face) %>
-
+  </div>
 </div>
 
 

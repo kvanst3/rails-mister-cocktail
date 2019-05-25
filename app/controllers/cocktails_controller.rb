@@ -71,3 +71,10 @@ end
           #   <% mar = result['drinks'] %>
           #   <img src= <%= mar[0]['strDrinkThumb'] %> alt="didnt" height= "400">
           # <% end %>
+
+    #       <%= cl_image_tag("hw2h05m2yqg5l7olzw5e.jpg",
+    #   width: 400, height: 300, crop: :fill) %>
+
+    # <!-- for face detection -->
+    # <%= cl_image_tag("v1558693420/dxifex5uisqgegesatsb.jpg",
+    #       width: 150, height: 150, crop: :thumb, gravity: :face) %>

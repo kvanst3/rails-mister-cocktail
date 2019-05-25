@@ -1,12 +1,12 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.nav{
+  height: 70px;
+  position: relative;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+#title{
+  position: absolute;
+  left: 100px;
+  top: 25px;
+  font-size: 30px;
+  font-family: URW Chancery L;
 }
