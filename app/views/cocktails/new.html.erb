@@ -1,12 +1,18 @@
+ <div class="nav">
+    <div id="icon"><%= cl_image_tag("icon_mamfrc", :height => 80) %></div>
+    <div id="title">Cocktailmania</div>
+    <div><%= link_to "Home", cocktails_path, id: 'new_cocktail'  %></div>
+ </div>
+
 <div class="container">
   <h2>Add new Cocktail</h2> <p> Leaving detail and photo blank will attempt to fill in automatically</p>
-
-  <%= simple_form_for(@cocktail) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :detail %>
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <%= f.submit "Add a cocktail", class: "btn btn-primary" %>
-  <% end %>
-  <div style="text-align: right"> <%= link_to 'back', cocktails_path %> </div>
+  <div class="new_form">
+    <%= simple_form_for(@cocktail) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :detail %>
+        <%= f.input :photo%>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit "Add a cocktail", class: "btn btn-light" %>
+    <% end %>
+  </div>
 </div>

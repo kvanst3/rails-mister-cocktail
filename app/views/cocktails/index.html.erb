@@ -1,10 +1,10 @@
  <div class="nav">
+    <div id="icon"><%= cl_image_tag("icon_mamfrc", :height => 80) %></div>
     <div id="title">Cocktailmania</div>
     <div><%= link_to "Add Cocktail", new_cocktail_path(@cocktail), id: 'new_cocktail'  %></div>
-    <div id="icon"><%= cl_image_tag("icon_mamfrc", :height => 80) %></div>
  </div>
  <div class="container">
-  <h1 style="color: #F60074; text-align: center">Cocktails</h1>
+  <!-- <h1 style="color: #F60074; text-align: center">Cocktails</h1> -->
 
   <div class=" cards">
     <% @cocktails.each do |cocktail| %>

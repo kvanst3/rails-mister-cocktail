@@ -1,12 +1,47 @@
 .nav{
   height: 70px;
-  position: relative;
+  // position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #title{
-  position: absolute;
+  horizontal-align: center;
   left: 100px;
   top: 25px;
   font-size: 30px;
   font-family: URW Chancery L;
+}
+
+#new_cocktail{
+  color: white;
+  text-decoration: none;
+  background-color: #F60074;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font: bolder;
+  text-align: right;
+  margin-right: 20px;
+
+}
+
+#icon{
+  // background-color: transparent;
+  // height: 80px;
+  // position: absolute;
+  top: 5px;
+  left: 30px;
+  margin-left: 20px;
+
+}
+
+// #new_form{
+// width: 70%;
+// background-color: red;
+// }
+
+.new_form {
+  width: 70%;
+  background-color: none;
 }
