@@ -4,21 +4,28 @@
 <% url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + @cocktail.name%>
 <% result = JSON.parse(open(url).read) %>
 
+<div class="nav">
+  <div id="icon"><%= cl_image_tag("icon_mamfrc", :height => 80) %></div>
+  <div id="title">Cocktailmania</div>
+  <div><%= link_to "Home", cocktails_path, id: 'new_cocktail'  %></div>
+</div>
+
 <div class="container">
   <div>
-    <h1><%= @cocktail.name %></h1>
-
-    <p style="text-align: right">  <%= link_to 'Home', :cocktails  %></p>
+    <div class="d-flex">
+      <h1><%= @cocktail.name %></h1>
+      <div class="ml-3"> <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_cocktail_path(@cocktail), id: 'edit' %> </div>
+    </div>
     <div class="d-flex">
       <div>
         <% if @cocktail.photo.present?  %>
-          <%= cl_image_tag @cocktail.photo, height: 400, crop: :fill %>
+          <%= cl_image_tag @cocktail.photo, height: 350, crop: :fill, id: 'pictures' %>
         <% else %>
 
         <% end %>
       </div>
       <div class="m-5">
-        <p> <%= @cocktail.detail %> <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_cocktail_path(@cocktail) %> </p>
+        <p> <%= @cocktail.detail %> </p>
       </div>
     </div>
     </br>
@@ -49,9 +56,8 @@
       <% end %>
     <% end %>
 
-    </br>
 
-    <%= link_to 'Add Ingredients', new_cocktail_dose_path(@cocktail)  %>
+    <%= link_to 'Add Ingredients', new_cocktail_dose_path(@cocktail), id: 'new_cocktail'  %>
   </div>
 </div>
 

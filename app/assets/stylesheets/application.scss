@@ -12,6 +12,7 @@
 @import "components/index";
 @import "components/card";
 @import "pages/index";
+@import "cocktails";
 
 body{
   color: white;
@@ -19,3 +20,8 @@ body{
   background-size: 100%;
   font-family: verdana;
 }
+
+h1{
+  font-family: verdana;
+}
+

@@ -1,10 +1,16 @@
+<div class="nav">
+  <div id="icon"><%= cl_image_tag("icon_mamfrc", :height => 80) %></div>
+  <div id="title">Cocktailmania</div>
+  <div><%= link_to "Back", cocktail_path(@cocktail), id: 'new_cocktail'  %></div>
+</div>
+
 <div class="container">
-  <%= simple_form_for([@cocktail, @dose]) do |f| %>
-      <%= f.input :description %>
-      <%= f.association :ingredient %>
-      <%= f.submit "Add Description", class: "btn btn-primary" %>
-  <% end %>
-</br>
-  <%= link_to 'back', cocktail_path(@cocktail)  %>
+  <div class="new_form">
+    <%= simple_form_for([@cocktail, @dose]) do |f| %>
+        <%= f.input :description %>
+        <%= f.association :ingredient %>
+        <%= f.submit "Add Description", class: "btn btn-light" %>
+    <% end %>
+  </div>
 </div>
 
